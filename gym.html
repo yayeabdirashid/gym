@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IRONBODY 50 — 6-Pack & Murqo Qorshaha</title>
+<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Russo+One&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:     #070709;
+    --bg2:    #0d0d12;
+    --bg3:    #13131a;
+    --bg4:    #1c1c26;
+    --border: rgba(255,255,255,0.06);
+    --border2:rgba(255,255,255,0.12);
+    --text:   #eceae3;
+    --text2:  #8a8880;
+    --text3:  #44433f;
+    --gold:   #f5c842;
+    --orange: #ff5c1a;
+    --cyan:   #38e8c8;
+    --red:    #ff3d3d;
+    --green:  #3dffaa;
+    --purple: #a855f7;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* === NOISE OVERLAY === */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* === DIAGONAL GRID BG === */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 40px,
+        rgba(255,255,255,0.012) 40px,
+        rgba(255,255,255,0.012) 41px
+      );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrap { max-width: 1140px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; }
+
+  /* ===========================
+     HERO HEADER
+  =========================== */
+  .hero {
+    padding: 64px 0 0;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: -60px; left: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(245,200,66,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-glow2 {
+    position: absolute;
+    top: 0; right: -80px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(255,92,26,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 32px;
+    padding-bottom: 40px;
+  }
+
+  .brand { flex: 1; min-width: 260px; }
+
+  .brand-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(245,200,66,0.3);
+    padding: 4px 10px;
+    border-radius: 2px;
+    margin-bottom: 16px;
+  }
+
+  .brand h1 {
+    font-family: 'Black Ops One', cursive;
+    font-size: clamp(56px, 9vw, 110px);
+    line-height: 0.88;
+    letter-spacing: -1px;
+    color: var(--text);
+  }
+
+  .brand h1 .highlight {
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--gold);
+    display: block;
+  }
+
+  .brand .subtitle {
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--text2);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    max-width: 380px;
+    line-height: 1.8;
+  }
+
+  /* Goal chips */
+  .goal-chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  .goal-chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid;
+  }
+
+  .goal-chip.g1 { border-color: rgba(245,200,66,0.4); color: var(--gold); background: rgba(245,200,66,0.06); }
+  .goal-chip.g2 { border-color: rgba(255,92,26,0.4); color: var(--orange); background: rgba(255,92,26,0.06); }
+  .goal-chip.g3 { border-color: rgba(56,232,200,0.4); color: var(--cyan); background: rgba(56,232,200,0.06); }
+
+  /* Stats right side */
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+
+  .hst {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    padding: 20px 24px;
+    text-align: center;
+    min-width: 100px;
+  }
+
+  .hst:nth-child(1) { border-radius: 8px 0 0 0; }
+  .hst:nth-child(2) { border-radius: 0 8px 0 0; }
+  .hst:nth-child(3) { border-radius: 0 0 0 8px; }
+  .hst:nth-child(4) { border-radius: 0 0 8px 0; }
+
+  .hst-val {
+    font-family: 'Russo One', sans-serif;
+    font-size: 36px;
+    line-height: 1;
+    color: var(--gold);
+  }
+
+  .hst-lbl {
+    font-size: 10px;
+    color: var(--text3);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 5px;
+  }
+
+  /* ===========================
+     PROGRESS BAR
+  =========================== */
+  .progress-bar-section {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .prog-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .prog-label {
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .prog-track {
+    flex: 1;
+    height: 3px;
+    background: var(--bg4);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .prog-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--orange));
+    border-radius: 2px;
+    transition: width 0.7s cubic-bezier(0.4,0,0.2,1);
+    position: relative;
+  }
+
+  .prog-fill::after {
+    content: '';
+    position: absolute;
+    right: 0; top: 50%;
+    transform: translateY(-50%);
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--orange);
+    box-shadow: 0 0 8px var(--orange);
+  }
+
+  .prog-pct {
+    font-family: 'Russo One', sans-serif;
+    font-size: 14px;
+    color: var(--gold);
+    flex-shrink: 0;
+    min-width: 40px;
+    text-align: right;
+  }
+
+  /* Milestone dots */
+  .milestones {
+    display: flex;
+    gap: 0;
+    margin-top: 10px;
+    position: relative;
+  }
+
+  .ms-dot {
+    flex: 1;
+    text-align: center;
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text3);
+    position: relative;
+    padding-top: 10px;
+  }
+
+  .ms-dot::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: var(--border2);
+  }
+
+  .ms-dot.reached { color: var(--gold); }
+  .ms-dot.reached::before { background: var(--gold); box-shadow: 0 0 4px var(--gold); }
+
+  /* ===========================
+     TABS
+  =========================== */
+  .tab-strip {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tab-strip::-webkit-scrollbar { display: none; }
+
+  .wtab {
+    flex-shrink: 0;
+    padding: 16px 20px 14px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--text3);
+    font-family: 'Russo One', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+
+  .wtab:hover { color: var(--text2); }
+
+  .wtab.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+
+  /* ===========================
+     WEEK BANNER
+  =========================== */
+  .week-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 0 24px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .wk-left { display: flex; align-items: center; gap: 20px; }
+
+  .wk-number {
+    font-family: 'Black Ops One', cursive;
+    font-size: 80px;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,0.08);
+    user-select: none;
+  }
+
+  .wk-info h2 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 24px;
+    letter-spacing: 0.5px;
+    color: var(--text);
+  }
+
+  .wk-info p {
+    font-size: 12px;
+    color: var(--text2);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  .intensity-display {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
+
+  .int-label {
+    font-size: 9px;
+    color: var(--text3);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .int-bars {
+    display: flex;
+    gap: 4px;
+    align-items: flex-end;
+  }
+
+  .int-bar {
+    width: 6px;
+    border-radius: 2px;
+    background: var(--bg4);
+    transition: background 0.3s, height 0.3s;
+  }
+
+  .int-bar.on { background: linear-gradient(to top, var(--orange), var(--gold)); }
+
+  /* ===========================
+     DAYS GRID
+  =========================== */
+  .days-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 12px;
+    padding: 24px 0 40px;
+  }
+
+  /* ===========================
+     DAY CARD
+  =========================== */
+  .day-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+  }
+
+  .day-card:hover { border-color: var(--border2); transform: translateY(-1px); }
+
+  .day-card.is-rest { opacity: 0.6; }
+  .day-card.done-card { border-color: rgba(61,255,170,0.25); }
+  .day-card.done-card::before {
+    content: '✓';
+    position: absolute;
+    top: 10px; right: 12px;
+    font-size: 11px;
+    color: var(--green);
+    font-weight: 700;
+  }
+
+  /* Card accent line */
+  .day-card.is-strength::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), var(--orange));
+  }
+
+  .day-card.is-hiit::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--red), var(--orange));
+  }
+
+  .day-card.is-rest::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--bg4);
+  }
+
+  /* Card header */
+  .card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px 0;
+  }
+
+  .day-num {
+    font-family: 'Russo One', sans-serif;
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .type-tag {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 3px;
+  }
+
+  .tag-strength { background: rgba(245,200,66,0.1); color: var(--gold); }
+  .tag-hiit { background: rgba(255,61,61,0.1); color: var(--red); }
+  .tag-rest { background: rgba(255,255,255,0.04); color: var(--text3); }
+
+  .card-title {
+    font-family: 'Russo One', sans-serif;
+    font-size: 16px;
+    padding: 8px 16px 12px;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* Exercise table */
+  .ex-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .ex-table tr {
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    transition: background 0.15s;
+  }
+
+  .ex-table tr:last-child { border-bottom: none; }
+  .ex-table tr:hover { background: rgba(255,255,255,0.03); }
+
+  .ex-table td {
+    padding: 9px 16px;
+    vertical-align: middle;
+  }
+
+  .ex-table td:first-child { width: 55%; }
+  .ex-table td:last-child { text-align: right; }
+
+  .ex-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    cursor: pointer;
+    transition: color 0.15s;
+    position: relative;
+  }
+
+  .ex-name:hover { color: var(--gold); }
+
+  .ex-name::after {
+    content: '↗';
+    font-size: 10px;
+    color: var(--text3);
+    margin-left: 4px;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+
+  .ex-name:hover::after { opacity: 1; }
+
+  .badge-row {
+    display: flex;
+    gap: 5px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 3px 7px;
+    border-radius: 3px;
+  }
+
+  .badge-ab { background: rgba(56,232,200,0.12); color: var(--cyan); }
+  .badge-kg { background: rgba(255,255,255,0.05); color: var(--text2); border: 1px solid var(--border); }
+  .badge-sets { background: rgba(245,200,66,0.1); color: var(--gold); }
+
+  /* Rest message */
+  .rest-msg {
+    padding: 20px 16px;
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.7;
+  }
+
+  .rest-tips {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 10px;
+  }
+
+  .rest-tip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text2);
+  }
+
+  .rest-tip .dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* Done button */
+  .done-btn-wrap {
+    padding: 10px 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  .done-btn {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--border2);
+    color: var(--text3);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 8px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .done-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .done-btn.is-done { border-color: rgba(61,255,170,0.4); color: var(--green); }
+  .done-btn.is-done:hover { border-color: var(--red); color: var(--red); }
+
+  /* ===========================
+     NUTRITION PANEL
+  =========================== */
+  .nutrition-section {
+    border-top: 1px solid var(--border);
+    padding: 40px 0;
+  }
+
+  .section-heading {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .section-heading h3 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 20px;
+    color: var(--text);
+  }
+
+  .section-heading span {
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .nutrition-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 10px;
+  }
+
+  .nut-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .nut-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+  }
+
+  .nut-card.nc1::before { background: var(--gold); }
+  .nut-card.nc2::before { background: var(--orange); }
+  .nut-card.nc3::before { background: var(--cyan); }
+  .nut-card.nc4::before { background: var(--purple); }
+
+  .nut-card h4 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 13px;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .nut-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .nut-card ul li {
+    font-size: 12px;
+    color: var(--text2);
+    line-height: 1.5;
+    padding-left: 12px;
+    position: relative;
+  }
+
+  .nut-card ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--text3);
+  }
+
+  /* ===========================
+     MODAL
+  =========================== */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s;
+  }
+
+  .modal-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .modal {
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-radius: 12px;
+    max-width: 500px;
+    width: 100%;
+    overflow: hidden;
+    transform: translateY(12px) scale(0.98);
+    transition: transform 0.25s cubic-bezier(0.4,0,0.2,1);
+    position: relative;
+  }
+
+  .modal-overlay.open .modal {
+    transform: translateY(0) scale(1);
+  }
+
+  .modal-top-bar {
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--orange), var(--cyan));
+  }
+
+  .modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 20px 22px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .modal-title {
+    font-family: 'Russo One', sans-serif;
+    font-size: 22px;
+    color: var(--text);
+    line-height: 1.2;
+  }
+
+  .modal-close {
+    width: 30px; height: 30px;
+    border: 1px solid var(--border2);
+    background: transparent;
+    color: var(--text2);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    flex-shrink: 0;
+  }
+
+  .modal-close:hover { border-color: var(--red); color: var(--red); }
+
+  .modal-body { padding: 20px 22px 24px; }
+
+  .modal-muscle {
+    font-size: 11px;
+    color: var(--cyan);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    padding: 6px 10px;
+    background: rgba(56,232,200,0.07);
+    border-radius: 4px;
+    display: inline-block;
+  }
+
+  .modal-section-label {
+    font-size: 10px;
+    color: var(--text3);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    margin-top: 14px;
+  }
+
+  .modal-how {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.75;
+  }
+
+  .modal-kg {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  .ab-chip {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--cyan);
+    background: rgba(56,232,200,0.1);
+    border: 1px solid rgba(56,232,200,0.3);
+    padding: 4px 10px;
+    border-radius: 3px;
+    margin-bottom: 14px;
+  }
+
+  .modal-yt {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 10px 16px;
+    background: rgba(255,92,26,0.1);
+    border: 1px solid rgba(255,92,26,0.3);
+    border-radius: 6px;
+    color: var(--orange);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+
+  .modal-yt:hover { background: rgba(255,92,26,0.2); }
+  .modal-yt::before { content: '▶'; font-size: 10px; }
+
+  /* ===========================
+     TIPS / RULES SECTION
+  =========================== */
+  .rules-section {
+    border-top: 1px solid var(--border);
+    padding: 40px 0 60px;
+  }
+
+  .rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+  }
+
+  .rule-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+  }
+
+  .rule-icon {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+
+  .rule-title {
+    font-family: 'Russo One', sans-serif;
+    font-size: 12px;
+    color: var(--text);
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+  }
+
+  .rule-text {
+    font-size: 11px;
+    color: var(--text2);
+    line-height: 1.6;
+  }
+
+  /* ===========================
+     BODY MUSCLE MAP LEGEND
+  =========================== */
+  .legend-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--text2);
+  }
+
+  .legend-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ===========================
+     SCROLL ANIMATIONS
+  =========================== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .day-card {
+    animation: fadeUp 0.4s ease both;
+  }
+
+  /* ===========================
+     RESPONSIVE
+  =========================== */
+  @media (max-width: 600px) {
+    .hero-inner { padding-bottom: 28px; }
+    .brand h1 { letter-spacing: -2px; }
+    .hero-stats { grid-template-columns: repeat(2, 1fr); width: 100%; }
+    .hst { min-width: 0; }
+    .days-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="brand">
+        <div class="brand-tag">☰ QORSHE JOOGTO AH</div>
+        <h1>
+          IRON
+          <span class="highlight">BODY</span>
+        </h1>
+        <p class="subtitle">50 Maalmood · 6-Pack + Murqo Waaweyn · Jirka Bilaa Dufan</p>
+        <div class="goal-chips">
+          <div class="goal-chip g1">⚡ Xoog Buuxa</div>
+          <div class="goal-chip g2">🔥 6-Pack Dhab</div>
+          <div class="goal-chip g3">💎 Murqo Cadaan</div>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="hst"><div class="hst-val">50</div><div class="hst-lbl">Maalmood</div></div>
+        <div class="hst"><div class="hst-val">7</div><div class="hst-lbl">Isboortiga</div></div>
+        <div class="hst"><div class="hst-val">25+</div><div class="hst-lbl">Jimicsi</div></div>
+        <div class="hst"><div class="hst-val">0</div><div class="hst-lbl">Canooge</div></div>
+      </div>
+    </div>
+
+    <!-- Progress -->
+    <div class="progress-bar-section">
+      <div class="prog-row">
+        <div class="prog-label">Horumarka</div>
+        <div class="prog-track">
+          <div class="prog-fill" id="progFill" style="width:0%"></div>
+        </div>
+        <div class="prog-pct" id="progPct">0%</div>
+      </div>
+      <div class="milestones" id="milestones"></div>
+    </div>
+
+    <!-- Week Tabs -->
+    <div class="tab-strip" id="weekTabs"></div>
+  </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main class="wrap">
+  <div id="weekContent"></div>
+
+  <!-- NUTRITION -->
+  <div class="nutrition-section">
+    <div class="section-heading">
+      <h3>Cuntada & Nafaqada</h3>
+      <span>Muhiim u ah 6-Pack</span>
+    </div>
+    <div class="legend-row">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--gold)"></div>Protein</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--orange)"></div>Kaloriye</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--cyan)"></div>Biyo</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--purple)"></div>Nasasho</div>
+    </div>
+    <div class="nutrition-grid">
+      <div class="nut-card nc1">
+        <h4>🥩 Protein Maalintii</h4>
+        <ul>
+          <li>1.8–2.2g protein / kg miisaankaaga</li>
+          <li>Digir, beed, hilib, caano ah</li>
+          <li>Markii jimicsi ka dib: 30–40g protein</li>
+          <li>Oo kala qaybso 4–5 jeer</li>
+        </ul>
+      </div>
+      <div class="nut-card nc2">
+        <h4>⚡ Kaloriye Xukumi</h4>
+        <ul>
+          <li>Calorie deficit yar: 200–300 kcal/maalin</li>
+          <li>Nafaqada xoogga ka saaro: rice, oats, potato</li>
+          <li>Jimicsi ka hor 2 saac: carbs fudud cun</li>
+          <li>Habeenkii: protein badan, carb yar</li>
+        </ul>
+      </div>
+      <div class="nut-card nc3">
+        <h4>💧 Biyo</h4>
+        <ul>
+          <li>Ugu yaraan 3–4 liter maalintii</li>
+          <li>Jimicsi gudihiis: biyo oo 15 daqiiqo mar</li>
+          <li>Electrolytes ku dar haddaad si xoog ah jimicsi</li>
+          <li>Shaax, khamri etc. xaddi</li>
+        </ul>
+      </div>
+      <div class="nut-card nc4">
+        <h4>😴 Nasasho & Hormoon</h4>
+        <ul>
+          <li>8 saacadood hurdo: testosterone kor u kacaa</li>
+          <li>Cortisol hoos u dhac: is-nasto, stress xog</li>
+          <li>Nasasho maalinta ke murqaha waxay kordhaan</li>
+          <li>Qaado Magnesium habeenkii</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULES -->
+  <div class="rules-section">
+    <div class="section-heading">
+      <h3>Xeerarka Muhiimka ah</h3>
+      <span>Ka dib ka dib si fiican</span>
+    </div>
+    <div class="rules-grid">
+      <div class="rule-card">
+        <div class="rule-icon">📈</div>
+        <div class="rule-title">Progressive Overload</div>
+        <div class="rule-text">Isboortiga kasta 1–2 asbuuc mar culeyska 5–10% kor u qaad. Murqaha kuma koraan haddaad waligaa culeys isla waydid.</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-icon">🎯</div>
+        <div class="rule-title">Mind-Muscle Connect</div>
+        <div class="rule-text">Marka jimicsi sameyso, murqa meesha aad shaqeyneyso u fiirso. Caloolaha: oo tightened hayso jidba. Tani 6-pack-ka waa furaha.</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-icon">⏱️</div>
+        <div class="rule-title">Nasasho Sets Dhexdiis</div>
+        <div class="rule-text">Xoog: 2–3 daqiiqo. HIIT: 30–60 sec. Calool jimicsiyada: 1 daqiiqo. Nasashada yar = lactic acid = murqo weyn.</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-icon">🔁</div>
+        <div class="rule-title">Tempo Tartiib</div>
+        <div class="rule-text">Hoos u dhibaato 3 second (eccentric). Kor u kabo xoog 1 sec (concentric). Tani murqaha aad u kordhisaa faaidada.</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-icon">🔥</div>
+        <div class="rule-title">HIIT vs Cardio</div>
+        <div class="rule-text">HIIT (sprint intervals) murqaha dhaawacdo yara waxay calool dufan gubaan traditional cardio ka siiso. Tani ayaanu isticmaalnaa.</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-icon">💪</div>
+        <div class="rule-title">6-Pack Xaqiiqa</div>
+        <div class="rule-text">6-pack waxay muuqataa marka dufanka caloosha hoos u dhaco. Jimicsi calool + protein badan + calorie xukumi = natiijo muuqda.</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-top-bar"></div>
+    <div class="modal-header">
+      <div class="modal-title" id="mTitle">—</div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div id="mAbChip"></div>
+      <div class="modal-muscle" id="mMuscle"></div>
+      <div class="modal-section-label">Sida Loo Sameeyo</div>
+      <div class="modal-how" id="mHow"></div>
+      <div class="modal-section-label">Culeys / Miisaan</div>
+      <div class="modal-kg" id="mKg"></div>
+      <a href="#" target="_blank" rel="noopener" class="modal-yt" id="mYT">YouTube Tutorial arag</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const exerciseDB = {
+  "Bench Press":         { muscle:"Laabta (pectoralis major), Garbaha hore, Gacmaha gadood (triceps)", how:"Banchi ku jiif, gacmaha barbell ku dhufo fara ku ballaaran oo laab ka sare. Soo deji si tartiib ah laabta si gaaraa, dib u kor u riix si buuxda.", kg:"Bilow: 20kg · Xoogaahe: 40–60kg · Xoogan: 80kg+", calool:false, yt:"https://www.youtube.com/results?search_query=bench+press+proper+form+tutorial" },
+  "Incline Bench Press": { muscle:"Laabta sare (upper pec), Garbaha hore (anterior deltoid)", how:"Banchi 30–45° la dhinacaado. Gacmaha ballaaran bar ku dhufo, laabta sare soo deji si tartiib ah, kor u riix.", kg:"Bilow: 20kg · Xoogaahe: 35–55kg · Xoogan: 70kg+", calool:false, yt:"https://www.youtube.com/results?search_query=incline+bench+press+form" },
+  "Barbell Squat":       { muscle:"Lugta oo dhan (quads, hamstrings), Gluteus, Core, Dhabarka", how:"Bar duugga saaro, lugaha ballaaran ku istaag. Hoos u jiid caloolaha oo taagan, jilbaha faraha kor kaga baxaan, hoos u gal 90° kadib taag.", kg:"Bilow: 20kg · Xoogaahe: 50–70kg · Xoogan: 100kg+", calool:false, yt:"https://www.youtube.com/results?search_query=barbell+squat+proper+form" },
+  "Romanian Deadlift":   { muscle:"Hamstrings, Gluteus, Dhabarka hoose", how:"Taag toosan bar ku hay. Gacmaha hore u dhig dhabarka si toosan hayso, oo lugaha gadood si tartiib ah jilciso. Dib u taag.", kg:"Bilow: 25kg · Xoogaahe: 50–70kg · Xoogan: 90kg+", calool:false, yt:"https://www.youtube.com/results?search_query=romanian+deadlift+form+tutorial" },
+  "Push Press":          { muscle:"Garbaha oo dhan, Triceps, Lugaha (explosive)", how:"Barbell laabta saaran. Jilbaha yar u hooyo, xoog u taag oo gacmaha kor u riix is-jog ah. Legs-ka xoogga ka qaado.", kg:"Bilow: 20kg · Xoogaahe: 40–55kg · Xoogan: 70kg+", calool:false, yt:"https://www.youtube.com/results?search_query=push+press+barbell+tutorial" },
+  "Ab Wheel Rollout":    { muscle:"Core oo dhan, Garbaha, Dhabarka hoose", how:"Jilbaha dhig, gacmaha ab wheel ku dhufo. Hore u dul keen jirka si tartiib ah, dib u celi caloolaha adoo si adag u xukuminaya.", kg:"Jirkaaga (aad u adag)", calool:true, yt:"https://www.youtube.com/results?search_query=ab+wheel+rollout+tutorial" },
+  "Cable Crunch":        { muscle:"Caloolaha hore (rectus abdominis)", how:"Jilbaha dhig cable machine hoosta, rope ku dhufo madaxa. Hoos u dhufo si xoog ah caloolaha kaga dul curis, dib u tooso tartiib.", kg:"20–50kg cable", calool:true, yt:"https://www.youtube.com/results?search_query=cable+crunch+ab+exercise+form" },
+  "Deadlift":            { muscle:"Dhabarka oo dhan, Gluteus, Lugaha, Core", how:"Ku istaag bar dhulka saaran, gacmaha soo dhow. Jiid si toosan, dhabarka ha laabnayn, laabka calool ku xukumi. Taag si buuxda.", kg:"Bilow: 30kg · Xoogaahe: 60–100kg · Xoogan: 120kg+", calool:false, yt:"https://www.youtube.com/results?search_query=deadlift+proper+form+beginner" },
+  "Pull-ups":            { muscle:"Dhabarka ballaaran (latissimus dorsi), Biceps, Core", how:"Bar ku dhufo gacmaha adoo ballaaran. Cududaha xoog u kabo, si tartiib ah jiid meesha joogto ilaa garbahu banchi-ga ku dhadhanto.", kg:"Culeyska jirkaaga + 5–20kg belt", calool:false, yt:"https://www.youtube.com/results?search_query=pull+ups+proper+form+tutorial" },
+  "Seated Row":          { muscle:"Dhabarka dhexe (rhomboids), Biceps, Garbaha gadood", how:"Fadhiiso cable machine, lugaha yar u jilciso. Gacmaha jiid laabta ku soo dhawaada, garbaha isku dhejis, dib u fur tartiib.", kg:"Bilow: 30kg · Xoogaahe: 50–70kg · Xoogan: 80kg+", calool:false, yt:"https://www.youtube.com/results?search_query=seated+cable+row+form" },
+  "Overhead Press":      { muscle:"Garbaha (deltoid oo dhan), Triceps", how:"Taag toosan, barbell laabta sare saaran gacmaha ballaaran. Si toosan kor ugu riix ilaa gacmahu fudud yimaaddo, dib u soo ceeli tartiib.", kg:"Bilow: 15kg · Xoogaahe: 35–50kg · Xoogan: 65kg+", calool:false, yt:"https://www.youtube.com/results?search_query=overhead+press+tutorial" },
+  "Lat Pulldown":        { muscle:"Dhabarka ballaaran (lat), Biceps, Core", how:"Fadhiiso machine-ka, lugaha xidid ku hoos hay. Gacmaha ballaaran bar ku dhufo; hoos u jiid laabta, garbaha isku dhejis.", kg:"Bilow: 30kg · Xoogaahe: 50–70kg · Xoogan: 80kg+", calool:false, yt:"https://www.youtube.com/results?search_query=lat+pulldown+proper+form" },
+  "Face Pulls":          { muscle:"Garbaha dambe (rear delt), Rotator cuff, Dhabarka dhexe", how:"Cable rope madax heer kaga saaro, lugaha oo taagan. Rope wajiga ku soo jiid gacmaha kala fur, garbaha dambe isku soo dhejis.", kg:"15–30kg cable", calool:false, yt:"https://www.youtube.com/results?search_query=face+pulls+shoulder+exercise+form" },
+  "Dumbbell Lunges":     { muscle:"Lugta (quads, hamstrings), Gluteus, Core", how:"Taag toosan dumbbells ku hay. Hal lugood hore u dhig, jilbaha gadood dhulka ku soo dhawaado, dib u kaco, ku celi lugaha kale.", kg:"Bilow: 5kg gacmo kasta · Xoogaahe: 15–20kg · Xoogan: 25kg+", calool:false, yt:"https://www.youtube.com/results?search_query=dumbbell+lunges+tutorial" },
+  "Leg Press":           { muscle:"Lugta oo dhan (quads, hamstrings, glutes)", how:"Fadhiiso machine-ka, lugaha plate ku dhufo ballaaran. Sii fur ilaa 90° si tartiib ah, kadib ku laabo toosinta.", kg:"Bilow: 40kg · Xoogaahe: 80–120kg · Xoogan: 150kg+", calool:false, yt:"https://www.youtube.com/results?search_query=leg+press+machine+tutorial" },
+  "Barbell Hip Thrust":  { muscle:"Gluteus maximus, Hamstrings, Core", how:"Dhabarka banchi ku dhufo, barbell hip saaran. Kor u qaad meel laabta iyo lugaha oo toosan yimaaddo, caloolaha xukumi.", kg:"Bilow: 30kg · Xoogaahe: 60–90kg · Xoogan: 100kg+", calool:false, yt:"https://www.youtube.com/results?search_query=barbell+hip+thrust+tutorial" },
+  "Nordic Curls":        { muscle:"Hamstrings (aad u xooggan — eccentric)", how:"Jilbaha dhig, lugaha kala qaataha ku xidho. Si tartiib ah dhulka u dhacso gacmaha dab ku hayso, jirka xukumi.", kg:"Jirkaaga (aad u adag)", calool:false, yt:"https://www.youtube.com/results?search_query=nordic+hamstring+curl+tutorial" },
+  "Tricep Pushdowns":    { muscle:"Gacmaha gadood (triceps)", how:"Cable machine hore u istaag, rope laabta dhinac ku hay. Hoos u riix gacmaha si toosan, cududaha taagan hayso, dib u kac tartiib.", kg:"15–35kg cable", calool:false, yt:"https://www.youtube.com/results?search_query=tricep+pushdown+cable+form" },
+  "Plank":               { muscle:"Caloolaha oo dhan (rectus, obliques, transverse), Garbaha, Xididdada dhabarka", how:"Ku jiif geesaha cududaha iyo faraha, jirka oo toosan sidii muus. Laabta kor u qaad, caloolaha xoog ku hayso, neefsashada sii wad.", kg:"Jirkaaga + adag: hal gacmo / hal lugood", calool:true, yt:"https://www.youtube.com/results?search_query=perfect+plank+form+tutorial" },
+  "Crunches":            { muscle:"Rectus abdominis (caloolaha hore)", how:"Ku jiif dhabarka, lugaha la buuxshay, gacmaha madaxa saaran. Kor u qaad garabkii si tartiib ah caloolaha kaga dul curis, hoos u soo celi.", kg:"Jirkaaga + adag: plate 5–10kg laab ku hayso", calool:true, yt:"https://www.youtube.com/results?search_query=proper+crunches+ab+exercise" },
+  "Leg Raises":          { muscle:"Caloolaha hoose (lower abs), Hip flexors", how:"Ku jiif dhabarka, gacmaha xagga lugaha dhig. Lugaha si toosan kor u qaad ilaa 90°, hoos u soo ceeli tartiib caloolaha xukuminaya.", kg:"Jirkaaga + ankle weights 2–8kg", calool:true, yt:"https://www.youtube.com/results?search_query=leg+raises+abs+lower+ab" },
+  "Russian Twists":      { muscle:"Caloolaha dhinacyada (obliques), Core", how:"Fadhiiso xagay ku diri, lugaha kor u qaad. Gacanta medball ama plate ku hay, garab midig ka guri, kadib bidix, oo caloolaha xukuminaya.", kg:"2–12kg plate ama medball", calool:true, yt:"https://www.youtube.com/results?search_query=russian+twists+obliques" },
+  "Mountain Climbers":   { muscle:"Core, Garbaha, Cardio xooggan", how:"Bilaaw push-up xaalad. Si degdeg ah lugaha isla jajab, mid hore mid gadood, gacmaha toosan hayso.", kg:"Jirkaaga", calool:true, yt:"https://www.youtube.com/results?search_query=mountain+climbers+exercise+form" },
+  "HIIT Sprints":        { muscle:"Jirka oo dhan, Cardio xooggan, Caloolaha", how:"30 sec orod ama cycle xoog ah, kadib 30 sec nasasho. Ku celi 10–20 wareeg. Calool dufan tani waxay gubaa oo murqaha waxay dhaafinaysaa.", kg:"Jirkaaga", calool:false, yt:"https://www.youtube.com/results?search_query=HIIT+sprints+fat+burn+workout" },
+  "Burpees":             { muscle:"Jirka oo dhan — explosive cardio", how:"Taag → jilbaha dhig → push-up samee → dib u kac → kor u boodo, gacantu madax ku dhadhanto. Si degdeg ah u samee.", kg:"Jirkaaga", calool:false, yt:"https://www.youtube.com/results?search_query=burpees+proper+form+tutorial" },
+  "Jump Rope":           { muscle:"Lugaha, Caloolaha, Cardio", how:"Xadhig wareejin isla xawli ah gacmaha oo yar u wareegtaan. Bilow 1 min on / 30 sec off, kor u qaad tartiib.", kg:"Jirkaaga", calool:false, yt:"https://www.youtube.com/results?search_query=jump+rope+workout+fat+loss" },
+  "Hanging Knee Raises": { muscle:"Caloolaha hoose, Hip flexors", how:"Bar ku dhufo si adag. Jilbaha kor u qaad ilaa caloolahu si xoog ah u xanaqaan, tartiib hoos u soo celi.", kg:"Jirkaaga + ankle weights 3–8kg", calool:true, yt:"https://www.youtube.com/results?search_query=hanging+knee+raises+abs" },
+  "Bicycle Crunches":    { muscle:"Obliques, Rectus abdominis oo dhan", how:"Ku jiif dhabarka, gacmaha madaxa saaran. Lugaha oo wareegaya, gacanta midig jilbaha bidixda ku taabasho, oo iska bedesh.", kg:"Jirkaaga", calool:true, yt:"https://www.youtube.com/results?search_query=bicycle+crunches+form" },
+  "Box Jumps":           { muscle:"Lugta, Gluteus, Core, Explosive power", how:"Taag sanduuqa hore, lugaha yar u hooyo, boodo xoog ah, labadii lugood isku mar sanduuqa dul saaro si toosan.", kg:"Jirkaaga", calool:false, yt:"https://www.youtube.com/results?search_query=box+jumps+tutorial+form" },
+  "Dragon Flags":        { muscle:"Core oo dhan — heer adag aad", how:"Banchi ku jiif, gacmaha dhabarka saaran. Jirka toosna kor u qaad — keliya garbuhuu banchi ku dhadhanyahay, tartiib hoos u soo ceeli.", kg:"Jirkaaga (heer xirfadlayaasha)", calool:true, yt:"https://www.youtube.com/results?search_query=dragon+flag+exercise+tutorial" }
+};
+
+const weekData = [
+  { week:1, title:"BILAABISTA", focus:"Aasaas dhig · Habka baranayso · Culeys fudud", intensity:2, days:[
+    {day:1,title:"Laab + Calool",type:"strength",exercises:[{n:"Bench Press",s:"4×10",kg:"20kg"},{n:"Incline Bench Press",s:"3×12",kg:"15kg"},{n:"Plank",s:"3×30sec",kg:"Jirkaaga"},{n:"Crunches",s:"3×15",kg:"Jirkaaga"},{n:"Leg Raises",s:"3×12",kg:"Jirkaaga"}]},
+    {day:2,title:"Lugta + Calool",type:"strength",exercises:[{n:"Barbell Squat",s:"4×10",kg:"20kg"},{n:"Dumbbell Lunges",s:"3×10",kg:"5kg"},{n:"Russian Twists",s:"3×15",kg:"3kg"},{n:"Leg Raises",s:"3×12",kg:"Jirkaaga"},{n:"Plank",s:"3×30sec",kg:"Jirkaaga"}]},
+    {day:3,title:"HIIT + Calool",type:"hiit",exercises:[{n:"HIIT Sprints",s:"10 wareeg",kg:"Jirkaaga"},{n:"Mountain Climbers",s:"3×30",kg:"Jirkaaga"},{n:"Burpees",s:"3×10",kg:"Jirkaaga"},{n:"Bicycle Crunches",s:"3×20",kg:"Jirkaaga"},{n:"Plank",s:"3×30sec",kg:"Jirkaaga"}]},
+    {day:4,title:"Dhabarka + Gacmaha + Calool",type:"strength",exercises:[{n:"Pull-ups",s:"3×8",kg:"Jirkaaga"},{n:"Lat Pulldown",s:"3×12",kg:"30kg"},{n:"Seated Row",s:"3×12",kg:"30kg"},{n:"Crunches",s:"3×15",kg:"Jirkaaga"},{n:"Hanging Knee Raises",s:"3×12",kg:"Jirkaaga"}]},
+    {day:5,title:"Garbaha + Calool",type:"strength",exercises:[{n:"Overhead Press",s:"4×10",kg:"15kg"},{n:"Face Pulls",s:"3×15",kg:"15kg"},{n:"Russian Twists",s:"3×15",kg:"3kg"},{n:"Cable Crunch",s:"3×15",kg:"20kg"},{n:"Plank",s:"3×40sec",kg:"Jirkaaga"}]},
+    {day:6,title:"HIIT + Calool",type:"hiit",exercises:[{n:"Jump Rope",s:"5×2min",kg:"Jirkaaga"},{n:"HIIT Sprints",s:"8 wareeg",kg:"Jirkaaga"},{n:"Mountain Climbers",s:"3×40",kg:"Jirkaaga"},{n:"Leg Raises",s:"4×15",kg:"Jirkaaga"},{n:"Ab Wheel Rollout",s:"3×10",kg:"Jirkaaga"}]},
+    {day:7,title:"Nasasho",type:"rest",exercises:[]}
+  ]},
+  { week:2, title:"XOOGGA KORODKA", focus:"Culeys 5–10% kor u qaad · Tempo tartiib", intensity:3, days:[
+    {day:8,title:"Laab + Calool",type:"strength",exercises:[{n:"Bench Press",s:"4×10",kg:"25kg"},{n:"Incline Bench Press",s:"3×12",kg:"20kg"},{n:"Cable Crunch",s:"4×15",kg:"25kg"},{n:"Bicycle Crunches",s:"3×20",kg:"Jirkaaga"},{n:"Leg Raises",s:"3×15",kg:"Jirkaaga"}]},
+    {day:9,title:"Lugta + Calool",type:"strength",exercises:[{n:"Barbell Squat",s:"4×10",kg:"30kg"},{n:"Romanian Deadlift",s:"3×10",kg:"30kg"},{n:"Hanging Knee Raises",s:"3×15",kg:"Jirkaaga"},{n:"Russian Twists",s:"3×20",kg:"5kg"},{n:"Plank",s:"3×45sec",kg:"Jirkaaga"}]},
+    {day:10,title:"HIIT Xooggan + Calool",type:"hiit",exercises:[{n:"Burpees",s:"4×12",kg:"Jirkaaga"},{n:"Box Jumps",s:"3×10",kg:"Jirkaaga"},{n:"HIIT Sprints",s:"12 wareeg",kg:"Jirkaaga"},{n:"Mountain Climbers",s:"4×40",kg:"Jirkaaga"},{n:"Ab Wheel Rollout",s:"3×10",kg:"Jirkaaga"}]},
+    {day:11,title:"Dhabarka + Calool",type:"strength",exercises:[{n:"Deadlift",s:"4×8",kg:"40kg"},{n:"Pull-ups",s:"3×10",kg:"Jirkaaga"},{n:"Seated Row",s:"3×12",kg:"40kg"},{n:"Cable Crunch",s:"4×15",kg:"25kg"},{n:"Bicycle Crunches",s:"3×25",kg:"Jirkaaga"}]},
+    {day:12,title:"Garbaha + Triceps + Calool",type:"strength",exercises:[{n:"Overhead Press",s:"4×10",kg:"20kg"},{n:"Tricep Pushdowns",s:"3×15",kg:"20kg"},{n:"Face Pulls",s:"3×15",kg:"20kg"},{n:"Dragon Flags",s:"3×6",kg:"Jirkaaga"},{n:"Plank",s:"3×50sec",kg:"Jirkaaga"}]},
+    {day:13,title:"HIIT Xooggan + Calool",type:"hiit",exercises:[{n:"Jump Rope",s:"6×2min",kg:"Jirkaaga"},{n:"HIIT Sprints",s:"12 wareeg",kg:"Jirkaaga"},{n:"Burpees",s:"3×12",kg:"Jirkaaga"},{n:"Leg Raises",s:"4×15",kg:"Ankle 2kg"},{n:"Russian Twists",s:"3×25",kg:"5kg"}]},
+    {day:14,title:"Nasasho",type:"rest",exercises:[]}
+  ]},
+  { week:3, title:"TAAKULEYNTA", focus:"Set kor u qaad · Drop sets bilaab", intensity:4, days:[
+    {day:15,title:"Laab Xooggan + Calool",type:"strength",exercises:[{n:"Bench Press",s:"5×8",kg:"30kg"},{n:"Incline Bench Press",s:"4×10",kg:"25kg"},{n:"Push Press",s:"3×10",kg:"25kg"},{n:"Cable Crunch",s:"4×20",kg:"30kg"},{n:"Dragon Flags",s:"3×8",kg:"Jirkaaga"}]},
+    {day:16,title:"Lugta Xooggan + Calool",type:"strength",exercises:[{n:"Barbell Squat",s:"5×8",kg:"40kg"},{n:"Leg Press",s:"4×12",kg:"80kg"},{n:"Barbell Hip Thrust",s:"4×12",kg:"40kg"},{n:"Hanging Knee Raises",s:"4×15",kg:"Ankle 3kg"},{n:"Plank",s:"4×45sec",kg:"Jirkaaga"}]},
+    {day:17,title:"HIIT + Calool",type:"hiit",exercises:[{n:"HIIT Sprints",s:"14 wareeg",kg:"Jirkaaga"},{n:"Box Jumps",s:"4×12",kg:"Jirkaaga"},{n:"Burpees",s:"4×15",kg:"Jirkaaga"},{n:"Mountain Climbers",s:"4×45",kg:"Jirkaaga"},{n:"Ab Wheel Rollout",s:"3×12",kg:"Jirkaaga"}]},
+    {day:18,title:"Dhabarka Xooggan + Calool",type:"strength",exercises:[{n:"Deadlift",s:"4×8",kg:"50kg"},{n:"Pull-ups",s:"4×10",kg:"+5kg"},{n:"Lat Pulldown",s:"3×12",kg:"50kg"},{n:"Bicycle Crunches",s:"4×30",kg:"Jirkaaga"},{n:"Russian Twists",s:"3×25",kg:"8kg"}]},
+    {day:19,title:"Garbaha + Calool",type:"strength",exercises:[{n:"Overhead Press",s:"5×8",kg:"25kg"},{n:"Push Press",s:"3×10",kg:"30kg"},{n:"Face Pulls",s:"3×20",kg:"25kg"},{n:"Cable Crunch",s:"4×20",kg:"30kg"},{n:"Leg Raises",s:"4×20",kg:"Ankle 3kg"}]},
+    {day:20,title:"HIIT Dhaadheer + Calool",type:"hiit",exercises:[{n:"Jump Rope",s:"8×2min",kg:"Jirkaaga"},{n:"HIIT Sprints",s:"14 wareeg",kg:"Jirkaaga"},{n:"Burpees",s:"4×15",kg:"Jirkaaga"},{n:"Dragon Flags",s:"3×8",kg:"Jirkaaga"},{n:"Plank",s:"4×60sec",kg:"Jirkaaga"}]},
+    {day:21,title:"Nasasho",type:"rest",exercises:[]}
+  ]},
+  { week:4, title:"DHEXE — PEAK 1", focus:"Culeys ugu badan ilaa hadda · Super sets bilaab", intensity:5, days:[
+    {day:22,title:"Laab + Calool",type:"strength",exercises:[{n:"Bench Press",s:"5×8",kg:"35kg"},{n:"Incline Bench Press",s:"4×10",kg:"30kg"},{n:"Push Press",s:"4×8",kg:"30kg"},{n:"Ab Wheel Rollout",s:"4×12",kg:"Jirkaaga"},{n:"Cable Crunch",s:"4×20",kg:"35kg"}]},
+    {day:23,title:"Lugta + Calool",type:"strength",exercises:[{n:"Barbell Squat",s:"5×8",kg:"50kg"},{n:"Romanian Deadlift",s:"4×10",kg:"50kg"},{n:"Leg Press",s:"4×12",kg:"100kg"},{n:"Hanging Knee Raises",s:"4×18",kg:"Ankle 4kg"},{n:"Russian Twists",s:"4×25",kg:"8kg"}]},
+    {day:24,title:"HIIT Peak + Calool",type:"hiit",exercises:[{n:"HIIT Sprints",s:"15 wareeg",kg:"Jirkaaga"},{n:"Burpees",s:"5×15",kg:"Jirkaaga"},{n:"Box Jumps",s:"4×15",kg:"Jirkaaga"},{n:"Mountain Climbers",s:"5×45",kg:"Jirkaaga"},{n:"Dragon Flags",s:"3×10",kg:"Jirkaaga"}]},
+    {day:25,title:"Dhabarka + Calool",type:"strength",exercises:[{n:"Deadlift",s:"5×6",kg:"60kg"},{n:"Pull-ups",s:"4×12",kg:"+10kg"},{n:"Seated Row",s:"4×10",kg:"55kg"},{n:"Bicycle Crunches",s:"4×30",kg:"Jirkaaga"},{n:"Ab Wheel Rollout",s:"4×12",kg:"Jirkaaga"}]},
+    {day:26,title:"Garbaha + Calool",type:"strength",exercises:[{n:"Overhead Press",s:"5×8",kg:"30kg"},{n:"Push Press",s:"4×8",kg:"35kg"},{n:"Face Pulls",s:"4×20",kg:"25kg"},{n:"Cable Crunch",s:"5×20",kg:"35kg"},{n:"Plank",s:"4×60sec",kg:"Jirkaaga"}]},
+    {day:27,title:"HIIT Max + Calool",type:"hiit",exercises:[{n:"Jump Rope",s:"10×2min",kg:"Jirkaaga"},{n:"HIIT Sprints",s:"15 wareeg",kg:"Jirkaaga"},{n:"Burpees",s:"5×15",kg:"Jirkaaga"},{n:"Leg Raises",s:"5×20",kg:"Ankle 4kg"},{n:"Dragon Flags",s:"3×10",kg:"Jirkaaga"}]},
+    {day:28,title:"Nasasho",type:"rest",exercises:[]}
+  ]},
+  { week:5, title:"XOOGGA GELINTA", focus:"Volume kor u qaad · 6 set aasaasiga", intensity:6, days:[
+    {day:29,title:"Laab + Calool",type:"strength",exercises:[{n:"Bench Press",s:"6×8",kg:"40kg"},{n:"Incline Bench Press",s:"4×10",kg:"30kg"},{n:"Push Press",s:"4×8",kg:"35kg"},{n:"Cable Crunch",s:"5×20",kg:"40kg"},{n:"Ab Wheel Rollout",s:"4×15",kg:"Jirkaaga"}]},
+    {day:30,title:"Lugta + Calool",type:"strength",exercises:[{n:"Barbell Squat",s:"6×8",kg:"55kg"},{n:"Romanian Deadlift",s:"4×10",kg:"55kg"},{n:"Barbell Hip Thrust",s:"5×12",kg:"60kg"},{n:"Dragon Flags",s:"4×10",kg:"Jirkaaga"},{n:"Russian Twists",s:"4×30",kg:"10kg"}]},
+    {day:31,title:"HIIT + Calool",type:"hiit",exercises:[{n:"HIIT Sprints",s:"16 wareeg",kg:"Jirkaaga"},{n:"Burpees",s:"5×18",kg:"Jirkaaga"},{n:"Box Jumps",s:"5×15",kg:"Jirkaaga"},{n:"Mountain Climbers",s:"5×50",kg:"Jirkaaga"},{n:"Plank",s:"5×60sec",kg:"Jirkaaga"}]},
+    {day:32,title:"Dhabarka + Calool",type:"strength",exercises:[{n:"Deadlift",s:"5×6",kg:"70kg"},{n:"Pull-ups",s:"5×12",kg:"+15kg"},{n:"Lat Pulldown",s:"4×10",kg:"60kg"},{n:"Bicycle Crunches",s:"5×35",kg:"Jirkaaga"},{n:"Hanging Knee Raises",s:"5×20",kg:"Ankle 5kg"}]},
+    {day:33,title:"Garbaha + Calool",type:"strength",exercises:[{n:"Overhead Press",s:"5×8",kg:"35kg"},{n:"Push Press",s:"4×8",kg:"40kg"},{n:"Nordic Curls",s:"3×8",kg:"Jirkaaga"},{n:"Cable Crunch",s:"5×20",kg:"40kg"},{n:"Ab Wheel Rollout",s:"4×15",kg:"Jirkaaga"}]},
+    {day:34,title:"HIIT + Calool",type:"hiit",exercises:[{n:"Jump Rope",s:"10×2min",kg:"Jirkaaga"},{n:"HIIT Sprints",s:"16 wareeg",kg:"Jirkaaga"},{n:"Burpees",s:"5×18",kg:"Jirkaaga"},{n:"Dragon Flags",s:"4×10",kg:"Jirkaaga"},{n:"Leg Raises",s:"5×20",kg:"Ankle 5kg"}]},
+    {day:35,title:"Nasasho",type:"rest",exercises:[]}
+  ]},
+  { week:6, title:"CULEYS SARREEYA", focus:"Xoogga ugu badan, Rep yar · Intensity dheer", intensity:7, days:[
+    {day:36,title:"Laab Adag + Calool",type:"strength",exercises:[{n:"Bench Press",s:"5×6",kg:"50kg"},{n:"Incline Bench Press",s:"4×8",kg:"35kg"},{n:"Push Press",s:"4×6",kg:"45kg"},{n:"Cable Crunch",s:"5×20",kg:"45kg"},{n:"Dragon Flags",s:"4×10",kg:"Jirkaaga"}]},
+    {day:37,title:"Lugta Adag + Calool",type:"strength",exercises:[{n:"Barbell Squat",s:"5×6",kg:"65kg"},{n:"Romanian Deadlift",s:"4×8",kg:"65kg"},{n:"Barbell Hip Thrust",s:"5×10",kg:"70kg"},{n:"Ab Wheel Rollout",s:"5×15",kg:"Jirkaaga"},{n:"Russian Twists",s:"4×30",kg:"10kg"}]},
+    {day:38,title:"HIIT Peak + Calool",type:"hiit",exercises:[{n:"HIIT Sprints",s:"18 wareeg",kg:"Jirkaaga"},{n:"Burpees",s:"6×18",kg:"Jirkaaga"},{n:"Box Jumps",s:"5×18",kg:"Jirkaaga"},{n:"Mountain Climbers",s:"6×50",kg:"Jirkaaga"},{n:"Plank",s:"5×75sec",kg:"Jirkaaga"}]},
+    {day:39,title:"Dhabarka Adag + Calool",type:"strength",exercises:[{n:"Deadlift",s:"5×5",kg:"80kg"},{n:"Pull-ups",s:"5×12",kg:"+20kg"},{n:"Seated Row",s:"4×10",kg:"65kg"},{n:"Bicycle Crunches",s:"5×40",kg:"Jirkaaga"},{n:"Hanging Knee Raises",s:"5×20",kg:"Ankle 6kg"}]},
+    {day:40,title:"Garbaha Adag + Calool",type:"strength",exercises:[{n:"Overhead Press",s:"5×6",kg:"40kg"},{n:"Push Press",s:"4×6",kg:"50kg"},{n:"Nordic Curls",s:"4×8",kg:"Jirkaaga"},{n:"Cable Crunch",s:"5×20",kg:"50kg"},{n:"Ab Wheel Rollout",s:"5×15",kg:"Jirkaaga"}]},
+    {day:41,title:"HIIT Max + Calool",type:"hiit",exercises:[{n:"Jump Rope",s:"12×2min",kg:"Jirkaaga"},{n:"HIIT Sprints",s:"18 wareeg",kg:"Jirkaaga"},{n:"Burpees",s:"6×18",kg:"Jirkaaga"},{n:"Dragon Flags",s:"4×12",kg:"Jirkaaga"},{n:"Leg Raises",s:"5×25",kg:"Ankle 6kg"}]},
+    {day:42,title:"Nasasho",type:"rest",exercises:[]}
+  ]},
+  { week:7, title:"UGU DAMBEYSA — GOOL", focus:"Xoogga ugu badan + HIIT dheer · Guulaha la gaadhay!", intensity:7, days:[
+    {day:43,title:"Laab Ugu Adag + Calool",type:"strength",exercises:[{n:"Bench Press",s:"5×5",kg:"55kg"},{n:"Incline Bench Press",s:"4×8",kg:"40kg"},{n:"Push Press",s:"4×6",kg:"50kg"},{n:"Cable Crunch",s:"5×25",kg:"50kg"},{n:"Dragon Flags",s:"5×12",kg:"Jirkaaga"}]},
+    {day:44,title:"Lugta Ugu Adag + Calool",type:"strength",exercises:[{n:"Barbell Squat",s:"5×5",kg:"75kg"},{n:"Deadlift",s:"5×5",kg:"90kg"},{n:"Barbell Hip Thrust",s:"5×10",kg:"80kg"},{n:"Ab Wheel Rollout",s:"5×18",kg:"Jirkaaga"},{n:"Hanging Knee Raises",s:"5×25",kg:"Ankle 7kg"}]},
+    {day:45,title:"HIIT Final + Calool",type:"hiit",exercises:[{n:"HIIT Sprints",s:"20 wareeg",kg:"Jirkaaga"},{n:"Burpees",s:"6×20",kg:"Jirkaaga"},{n:"Box Jumps",s:"5×20",kg:"Jirkaaga"},{n:"Mountain Climbers",s:"6×55",kg:"Jirkaaga"},{n:"Plank",s:"5×90sec",kg:"Jirkaaga"}]},
+    {day:46,title:"Dhabarka Ugu Adag + Calool",type:"strength",exercises:[{n:"Pull-ups",s:"5×15",kg:"+25kg"},{n:"Lat Pulldown",s:"4×10",kg:"70kg"},{n:"Seated Row",s:"4×10",kg:"70kg"},{n:"Bicycle Crunches",s:"5×45",kg:"Jirkaaga"},{n:"Russian Twists",s:"5×35",kg:"12kg"}]},
+    {day:47,title:"Garbaha Ugu Adag + Calool",type:"strength",exercises:[{n:"Overhead Press",s:"5×5",kg:"45kg"},{n:"Push Press",s:"4×5",kg:"55kg"},{n:"Nordic Curls",s:"4×10",kg:"Jirkaaga"},{n:"Cable Crunch",s:"5×25",kg:"55kg"},{n:"Ab Wheel Rollout",s:"5×18",kg:"Jirkaaga"}]},
+    {day:48,title:"HIIT Ugu Xooggan + Calool",type:"hiit",exercises:[{n:"Jump Rope",s:"15×2min",kg:"Jirkaaga"},{n:"HIIT Sprints",s:"20 wareeg",kg:"Jirkaaga"},{n:"Burpees",s:"6×20",kg:"Jirkaaga"},{n:"Dragon Flags",s:"5×12",kg:"Jirkaaga"},{n:"Leg Raises",s:"5×30",kg:"Ankle 8kg"}]},
+    {day:49,title:"HIIT Fudud + Calool",type:"hiit",exercises:[{n:"Jump Rope",s:"8×2min",kg:"Jirkaaga"},{n:"Bicycle Crunches",s:"4×30",kg:"Jirkaaga"},{n:"Plank",s:"4×90sec",kg:"Jirkaaga"},{n:"Leg Raises",s:"4×25",kg:"Ankle 5kg"},{n:"Russian Twists",s:"4×30",kg:"8kg"}]},
+    {day:50,title:"GOOL — Nasasho & Qiimee",type:"rest",exercises:[]}
+  ]}
+];
+
+// ── State ──────────────────────────────────────────────
+let currentWeek = 0;
+let done = new Set();
+try { done = new Set(JSON.parse(localStorage.getItem('ib50_done') || '[]')); } catch(e){}
+
+function save() {
+  try { localStorage.setItem('ib50_done', JSON.stringify([...done])); } catch(e){}
+}
+
+// ── Build milestones ───────────────────────────────────
+function buildMilestones() {
+  const el = document.getElementById('milestones');
+  const labels = ['Isb 1','Isb 2','Isb 3','Isb 4','Isb 5','Isb 6','Isb 7','🏆'];
+  const thresholds = [7,14,21,28,35,42,49,50];
+  el.innerHTML = thresholds.map((t,i) => {
+    const reached = done.size >= t;
+    return `<div class="ms-dot${reached?' reached':''}">
+      <span>${labels[i]}</span>
+    </div>`;
+  }).join('');
+}
+
+// ── Build week tabs ────────────────────────────────────
+function buildTabs() {
+  const nav = document.getElementById('weekTabs');
+  nav.innerHTML = weekData.map((w,i) =>
+    `<button class="wtab${i===0?' active':''}" onclick="setWeek(${i})">ISB ${w.week}</button>`
+  ).join('');
+}
+
+function setWeek(i) {
+  currentWeek = i;
+  document.querySelectorAll('.wtab').forEach((b,idx) => b.classList.toggle('active', idx===i));
+  renderWeek();
+  updateProgress();
+}
+
+// ── Render week ────────────────────────────────────────
+function renderWeek() {
+  const w = weekData[currentWeek];
+
+  // intensity bars
+  const barHeights = [12,16,20,24,28,32,36];
+  let barsHtml = '';
+  for(let i=0;i<7;i++) {
+    barsHtml += `<div class="int-bar${i<w.intensity?' on':''}" style="height:${barHeights[i]}px"></div>`;
+  }
+
+  let html = `<div class="week-banner">
+    <div class="wk-left">
+      <div class="wk-number">0${w.week}</div>
+      <div class="wk-info">
+        <h2>${w.title}</h2>
+        <p>${w.focus}</p>
+      </div>
+    </div>
+    <div class="intensity-display">
+      <div class="int-label">Intensity</div>
+      <div class="int-bars">${barsHtml}</div>
+    </div>
+  </div>
+  <div class="days-grid">`;
+
+  w.days.forEach((d, idx) => {
+    const isDone = done.has(d.day);
+    let typeClass = 'is-strength', tagHtml = '<span class="type-tag tag-strength">XOOG</span>';
+    if(d.type==='rest') { typeClass='is-rest'; tagHtml='<span class="type-tag tag-rest">NASASHO</span>'; }
+    if(d.type==='hiit') { typeClass='is-hiit'; tagHtml='<span class="type-tag tag-hiit">HIIT</span>'; }
+
+    html += `<div class="day-card ${typeClass}${isDone?' done-card':''}" style="animation-delay:${idx*0.05}s">
+      <div class="card-head">
+        <span class="day-num">MAALIN ${d.day}</span>
+        ${tagHtml}
+      </div>
+      <div class="card-title">${d.title}</div>`;
+
+    if(d.type==='rest') {
+      html += `<div class="rest-msg">
+        Naso. Murqahu maalin nasashada waxay kordhaan — tani xoogga kama-qaybqaadashada midda ugu muhiimsan.
+        <div class="rest-tips">
+          <div class="rest-tip"><div class="dot"></div>8+ saacadood hur</div>
+          <div class="rest-tip"><div class="dot"></div>3+ liter biyo cab</div>
+          <div class="rest-tip"><div class="dot"></div>Protein badan cun</div>
+          <div class="rest-tip"><div class="dot"></div>Stretch fudud samee</div>
+        </div>
+      </div>`;
+    } else {
+      html += `<table class="ex-table">`;
+      d.exercises.forEach(e => {
+        const db = exerciseDB[e.n];
+        const isAb = db && db.calool;
+        html += `<tr>
+          <td><span class="ex-name" onclick="openModal('${e.n.replace(/'/g,"\\'")} ')">${e.n}</span></td>
+          <td><div class="badge-row">
+            ${isAb?'<span class="badge badge-ab">Calool</span>':''}
+            <span class="badge badge-kg">${e.kg}</span>
+            <span class="badge badge-sets">${e.s}</span>
+          </div></td>
+        </tr>`;
+      });
+      html += `</table>`;
+    }
+
+    html += `<div class="done-btn-wrap">
+      <button class="done-btn${isDone?' is-done':''}" onclick="toggleDone(${d.day}, this)">
+        ${isDone?'✓ LA DHAMAYSTIRAY':'CALAAMADEE DHAMEEN'}
+      </button>
+    </div></div>`;
+  });
+
+  html += `</div>`;
+  document.getElementById('weekContent').innerHTML = html;
+}
+
+// ── Toggle done ────────────────────────────────────────
+function toggleDone(dayNum, btn) {
+  const card = btn.closest('.day-card');
+  if(done.has(dayNum)) {
+    done.delete(dayNum);
+    btn.textContent = 'CALAAMADEE DHAMEEN';
+    btn.classList.remove('is-done');
+    card.classList.remove('done-card');
+  } else {
+    done.add(dayNum);
+    btn.textContent = '✓ LA DHAMAYSTIRAY';
+    btn.classList.add('is-done');
+    card.classList.add('done-card');
+  }
+  save();
+  updateProgress();
+}
+
+// ── Progress ───────────────────────────────────────────
+function updateProgress() {
+  const pct = Math.round((done.size / 50) * 100);
+  document.getElementById('progFill').style.width = pct + '%';
+  document.getElementById('progPct').textContent = pct + '%';
+  buildMilestones();
+}
+
+// ── Modal ──────────────────────────────────────────────
+function openModal(name) {
+  name = name.trim();
+  const ex = exerciseDB[name];
+  if(!ex) return;
+  document.getElementById('mTitle').textContent = name;
+  document.getElementById('mMuscle').textContent = ex.muscle;
+  document.getElementById('mHow').textContent = ex.how;
+  document.getElementById('mKg').textContent = ex.kg;
+  document.getElementById('mAbChip').innerHTML = ex.calool ? '<div class="ab-chip">★ CALOOLAHA KA CAAWIYA</div>' : '';
+  document.getElementById('mYT').href = ex.yt;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+}
+
+document.getElementById('modalOverlay').addEventListener('click', function(e) {
+  if(e.target === this) closeModal();
+});
+
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+
+// ── Init ───────────────────────────────────────────────
+buildTabs();
+renderWeek();
+updateProgress();
+</script>
+</body>
+</html>
